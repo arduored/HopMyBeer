@@ -1,0 +1,38 @@
+datasource db {
+  provider          = "postgres"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Beer {
+  id          String    @id @default(uuid())
+  name        String
+  proof       Int
+  description String?
+  style       BeerStyle @relation(fields: [beerStyleId], references: [id])
+
+  breweryId String
+  brewery   Brewery @relation(fields: [breweryId], references: [id])
+
+  createdAt   DateTime
+  updatedAt   DateTime
+  beerStyleId String
+}
+
+model Brewery {
+  id     String @id @default(uuid())
+  name   String
+  adress String
+  beers  Beer[]
+}
+
+model BeerStyle {
+  id    String @id @default(uuid())
+  label String
+  description String
+  Beer  Beer[]
+}
