@@ -8,9 +8,9 @@ type NavItemProps = {
 
 export default function NavItem({ name, path, icon }: NavItemProps) {
   return (
-    <a href={path}>
+    <a href={path} className="nav-item">
+      <div className="nav-item-label">{name}</div>
       <div className="nav-icon">{icon}</div>
-      {/* <div className="navbar-item-label">{name}</div> */}
     </a>
   );
 }

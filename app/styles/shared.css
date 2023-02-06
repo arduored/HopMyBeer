@@ -8,6 +8,7 @@
 :root {
   --prussianBlue: #212d40;
   --prussianBlueFog: #212d4033;
+  --backdrop: #212d4063;
   --charcoal: #364156;
   --charcoalFog: #36415608;
   --tuscanRed: #7d4e57;
@@ -33,6 +34,46 @@ svg {
   height: 24px;
 }
 
+.backdrop {
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  margin-top: 5.25rem;
+  z-index: 10;
+  width: 100vw;
+  height: calc(100% - 5.25rem);
+}
+
+.backdrop-on {
+  background-color: var(--backdrop);
+}
+
+.backdrop-off {
+  transition: all 1.2s ease-in-out;
+  background-color: transparent;
+  visibility: hidden;
+}
+
+.drawer {
+  position: absolute;
+  right: -100vw;
+  height: 100%;
+  width: 55%;
+  background-color: white;
+  margin-left: 7rem;
+  padding: 1rem 2rem;
+}
+
+.drawer-open {
+  right: 0vw;
+  transition: right 1.2s;
+}
+
+.drawer-close {
+  right: -100vw;
+  transition: right 1.2s;
+}
+
 .navbar-wrapper {
   position: sticky;
   top: 0;
@@ -40,20 +81,34 @@ svg {
   background-color: rgba(255, 255, 255, 0.95);
   justify-content: space-between;
   align-items: center;
-  min-height: 3rem;
+  height: 3rem;
   border-bottom: 4px solid var(--prussianBlue);
   padding: 1em;
   margin-bottom: 2rem;
 }
 
-.navbar-item-label {
-  font-weight: 900;
-  font-size: 1.4rem;
-  color: var(--prussianBlue);
+.navbar-title {
+  display: flex;
+  align-items: center;
 }
 
-.nav-icon {
-  fill: var(--prussianBlue)
+
+.nav-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid transparent;
+  transition: border-bottom .3s ease-in-out;
+
+}
+
+.nav-item:hover {
+  border-bottom: 3px solid var(--copperRed);
+  transition: border-bottom 1s ease-out;
+}
+
+.nav-item-label {
+  font-size: 1.3rem;
 }
 
 .card-wrapper {
@@ -213,7 +268,7 @@ form {
   margin-bottom: 0.5rem;
 }
 
-input, select {
+input {
   height: 1.3rem;
   width: calc(100% - 0.2rem - 5px);
   margin-top: 0.4rem;
@@ -221,6 +276,20 @@ input, select {
   border-bottom:  0.15rem solid var(--prussianBlueFog);
   padding: 5px;
   background-color: white;
+}
+
+select {
+  height: 2.05rem;
+  width: calc(100% - 0.2rem - 5px);
+  margin-top: 0.4rem;
+  border: none;
+  border-bottom:  0.15rem solid var(--prussianBlueFog);
+  padding: 5px;
+  background-color: white;
+}
+
+select option:hover {
+background-color: var(--copperRed);
 }
 
 input:focus, select:focus {

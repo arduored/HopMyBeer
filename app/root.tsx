@@ -7,11 +7,13 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import Drawer from "./components/Shared/Drawer";
 import ListIcon from "./components/Shared/Icons/ListIcon";
 import SearchIcon from "./components/Shared/Icons/SearchIcon";
 import StoreIcon from "./components/Shared/Icons/StoreIcon";
 
 import Navbar from "./components/Shared/Navbar";
+import NavItem from "./components/Shared/NavItem";
 import styles from "./styles/shared.css";
 
 export function links() {
@@ -25,7 +27,6 @@ export const meta: MetaFunction = () => ({
 });
 
 const navItems: { name: string; href: string; icon?: JSX.Element }[] = [
-  { name: "Home", href: "/", icon: <StoreIcon /> },
   { name: "All", href: "/beers", icon: <ListIcon /> },
   {
     name: "Explore",
@@ -44,6 +45,16 @@ export default function App() {
       </head>
       <body>
         <Navbar routes={navItems} />
+        <Drawer origin="right">
+          {navItems.map((item) => (
+            <NavItem
+              key={item.name}
+              name={item.name}
+              path={item.href}
+              icon={item.icon}
+            />
+          ))}
+        </Drawer>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
