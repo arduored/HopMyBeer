@@ -92,6 +92,16 @@ svg {
   align-items: center;
 }
 
+.navbar-menu {
+  /* border: 1px solid green; */
+  transition: transform .8s ease-in-out;
+}
+
+ .active {
+  transform: rotate(180deg);
+  transition: transform .8s ease-in-out;
+}
+
 
 .nav-item {
   display: flex;
