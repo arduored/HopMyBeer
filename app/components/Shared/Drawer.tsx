@@ -9,7 +9,6 @@ export default function Drawer({ origin, children }: DrawerProps) {
   const { isOpen, close } = useDrawer();
 
   const handleBackDropClick = () => {
-    console.log("triggered");
     close();
   };
 

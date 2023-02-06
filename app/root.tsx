@@ -44,7 +44,7 @@ export default function App() {
         <Scripts href="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" />
       </head>
       <body>
-        <Navbar routes={navItems} />
+        <Navbar />
         <Drawer origin="right">
           {navItems.map((item) => (
             <NavItem
